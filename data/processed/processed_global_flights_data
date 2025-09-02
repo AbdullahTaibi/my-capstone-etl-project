@@ -1,0 +1,46 @@
+# Save the processed/transformed data
+import os
+
+print("💾 Saving Processed Data")
+print("=" * 40)
+
+# Create processed data directory if it doesn't exist
+processed_dir = "../data/processed"
+os.makedirs(processed_dir, exist_ok=True)
+
+# Define output file path
+output_file = os.path.join(processed_dir, "processed_global_flights_data.csv")
+
+# Save the transformed dataframe
+df.to_csv(output_file, index=False)
+
+# Verify the file was saved
+if os.path.exists(output_file):
+    file_size = os.path.getsize(output_file)
+    file_size_mb = file_size / (1024 * 1024)
+    
+    print(f"✅ Processed data saved successfully!")
+    print(f"📁 File location: {output_file}")
+    print(f"📊 File size: {file_size_mb:.2f} MB")
+    print(f"📊 Number of rows: {len(df):,}")
+    print(f"📊 Number of columns: {len(df.columns)}")
+    
+    print(f"\n📋 Final Column List:")
+    for i, col in enumerate(df.columns, 1):
+        print(f"  {i:2d}. {col}")
+    
+    print(f"\n🎯 Data Processing Summary:")
+    print(f"  • Currency converted to GBP")
+    print(f"  • CO2 emissions converted to kg")
+    print(f"  • Location columns merged")
+    print(f"  • Travel month column created")
+    print(f"  • Duplicate rows removed")
+    print(f"  • Unnecessary columns dropped")
+    print(f"  • Dataset size optimized for GitHub")
+    
+    # Display final sample of processed data
+    print(f"\n📋 Final Processed Data Sample:")
+    print(df.head())
+    
+else:
+    print("❌ Error: Failed to save processed data file")
