@@ -1,4 +1,4 @@
-#Import libaries
+#Import libraries
 
 import os
 import logging
@@ -12,27 +12,27 @@ FILE_PATH = os.path.join(
     "..",
     "data",
     "raw",
-    "unclean_abalone.csv",
+    "global_flights_data.csv",
 )
 # Configure the logger
 logger = setup_logger(__name__, "extract_data.log", level=logging.DEBUG)
 EXPECTED_PERFORMANCE = 0.0001
-TYPE = "ABALONE from CSV"
+TYPE = "GLOBAL_FLIGHTS from CSV"
 
-def extract_abalone() -> pd.DataFrame:
+def extract_global_flights() -> pd.DataFrame:
     start_time = timeit.default_timer()
     try:
-        abalone_df = pd.read_csv(FILE_PATH)
-        extract_abalone_execution_time = timeit.default_timer() - start_time
+        global_flights_df = pd.read_csv(FILE_PATH)
+        extract_global_flights_execution_time = timeit.default_timer() - start_time
         log_extract_success(
             logger,
             TYPE,
-            abalone_df.shape,
-            extract_abalone_execution_time,
+            global_flights_df.shape,
+            extract_global_flights_execution_time,
             EXPECTED_PERFORMANCE,
         )
-        
-        return abalone_df
+
+        return global_flights_df
     except Exception as e:
         logger.setLevel(logging.ERROR)
         logger.error(f"Error loading {FILE_PATH}: {e}")
