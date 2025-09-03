@@ -1,49 +1,39 @@
-from __future__ import annotations
+#Import libaries
 
-import argparse
+import os
 import logging
-from pathlib import Path
 import pandas as pd
+import timeit
+from src.utils.logging_utils import setup_logger, log_extract_success
+# Define the file path for the customers CSV file
+FILE_PATH = os.path.join(
+    os.path.dirname(__file__),
+    "..",
+    "..",
+    "data",
+    "raw",
+    "unclean_abalone.csv",
+)
+# Configure the logger
+logger = setup_logger(__name__, "extract_data.log", level=logging.DEBUG)
+EXPECTED_PERFORMANCE = 0.0001
+TYPE = "ABALONE from CSV"
 
-LOG = logging.getLogger("etl.extract")
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
-
-
-def extract(csv_path: Path) -> pd.DataFrame:
-  
-    if not csv_path.exists():
-        raise FileNotFoundError(f"Input CSV not found: {csv_path}")
-
-    # Load with minimal parsing; full cleaning happens in transform step
-    
-    df = pd.read_csv(csv_path)
-    LOG.info("Loaded %s (rows=%s, cols=%s)", csv_path, len(df), df.shape[1])
-
-    # Parse basic datetime columns (safe; leaves others as-is)
-    
-    for col in ("departure_time", "arrival_time", "scan_date"):
-        if col in df.columns:
-            df[col] = pd.to_datetime(df[col], dayfirst=True, errors="coerce")
-
-    return df
-
-
-def _cli():
-    p = argparse.ArgumentParser(description="Extract flights data from CSV")
-    p.add_argument("--input", type=Path, default=Path("data/raw/Global_flights_data.csv"))
-    p.add_argument("--out-parquet", type=Path, default=None, help="Optional interim parquet output")
-    args = p.parse_args()
-
-    df = extract(args.input)
-
-    if args.out_parquet:
-        args.out_parquet.parent.mkdir(parents=True, exist_ok=True)
-        df.to_parquet(args.out_parquet, index=False)
-        LOG.info("Wrote interim parquet: %s", args.out_parquet)
-    else:
-        # quick peek when running by hand
-        print(df.head(10).to_string(index=False))
-
-
-if __name__ == "__main__":
-    _cli()
+def extract_abalone() -> pd.DataFrame:
+    start_time = timeit.default_timer()
+    try:
+        abalone_df = pd.read_csv(FILE_PATH)
+        extract_abalone_execution_time = timeit.default_timer() - start_time
+        log_extract_success(
+            logger,
+            TYPE,
+            abalone_df.shape,
+            extract_abalone_execution_time,
+            EXPECTED_PERFORMANCE,
+        )
+        
+        return abalone_df
+    except Exception as e:
+        logger.setLevel(logging.ERROR)
+        logger.error(f"Error loading {FILE_PATH}: {e}")
+        raise Exception(f"Failed to load CSV file: {FILE_PATH}")
