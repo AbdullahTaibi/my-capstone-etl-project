@@ -16,7 +16,7 @@ FILE_PATH = os.path.join(
 )
 # Configure the logger
 logger = setup_logger(__name__, "extract_data.log", level=logging.DEBUG)
-EXPECTED_PERFORMANCE = 0.0001
+EXPECTED_PERFORMANCE = 0.0001                                          #Benchmark
 TYPE = "GLOBAL_FLIGHTS from CSV"
 
 def extract_global_flights() -> pd.DataFrame:
