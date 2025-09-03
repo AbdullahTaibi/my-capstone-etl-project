@@ -5,7 +5,9 @@ import logging
 import pandas as pd
 import timeit
 from src.utils.logging_utils import setup_logger, log_extract_success
-# Define the file path for the customers CSV file
+
+# Define the file path for the flights CSV file
+
 FILE_PATH = os.path.join(
     os.path.dirname(__file__),
     "..",
@@ -14,7 +16,8 @@ FILE_PATH = os.path.join(
     "raw",
     "global_flights_data.csv",
 )
-# Configure the logger
+# Config the logger
+
 logger = setup_logger(__name__, "extract_data.log", level=logging.DEBUG)
 EXPECTED_PERFORMANCE = 0.0001                                          #Benchmark
 TYPE = "GLOBAL_FLIGHTS from CSV"

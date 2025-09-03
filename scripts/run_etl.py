@@ -10,11 +10,11 @@ from src.extract.extract import extract_global_flights
 
 log_base_path = os.getenv("LOG_BASE_PATH")
 logger = setup_logger(
-    "etl_pipeline", "etl_pipeline.log", base_path=log_base_path
+    "etl_pipeline", "etl_pipeline.log", base_path=log_base_path)
 
 def main():
     
-    setup_env(sys.argv)
+    
     
     try:
         # Get the argument from the run_etl command and set up the environment
@@ -33,4 +33,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-)
