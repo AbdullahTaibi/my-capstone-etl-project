@@ -1,6 +1,7 @@
 # Flights Capstone Project
 
-![Alt text](https://images.stockcake.com/public/e/4/6/e46d51ef-31f3-45ea-802b-83e996afa7e1_large/sunset-flight-silhouette-stockcake.jpg)
+![Curiosidades sobre viajar en avión](https://www.grupooneair.com/wp-content/uploads/2023/06/10-cuirosidades-sobre-viajar-en-avion.jpg)
+
 
 
 
