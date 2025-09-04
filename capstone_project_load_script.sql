@@ -1,19 +1,19 @@
 SELECT * FROM abdullah_etl_capstone_project;
 
-SELECT COUNT(DISTINCT dest_country) AS unique_country_count
+SELECT COUNT(DISTINCT dest_country) AS unique_country_count --Ran the queries to have an idea on what the data looks like
 FROM abdullah_etl_capstone_project;
 
 SELECT 
   dest_country,
-  COUNT(*) AS visit_count,
+  COUNT(*) AS visit_count, --count the most visited country, USA appears as top destination
   RANK() OVER (ORDER BY COUNT(*) DESC) AS rank
 FROM abdullah_etl_capstone_project
 GROUP BY dest_country
 ORDER BY rank;
 
-SELECT * FROM abdullah_etl_capstone_project;
 
-SELECT DISTINCT UNNEST(string_to_array(aircraft_type, '|')) AS aircraft
+
+SELECT DISTINCT UNNEST(string_to_array(aircraft_type, '|')) AS aircraft --Selected aircrafts after the slice in between to display most used aircraft throughout database
 FROM abdullah_etl_capstone_project;
 
 SELECT dest_country, COUNT(*) AS flight_count
