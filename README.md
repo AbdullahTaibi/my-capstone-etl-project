@@ -1,90 +1,70 @@
-Customer Epic — Plan smarter, greener trips
+# my-capstone-etl-project
 
-Goal: Help customers quickly find and compare flights by destination, dates, time, price, and impact.
+## Project overview
 
-Story C1 — Filter by destination & dates with KPIs
+Flights are considered a luxury good in economical concepts, meaning as your income increases you would increase your consumption of such transport method. When booking a flight, or a number of flights, it is important to consider several factors, including season, necessity, type of plane, ticket prices, and ultimately how long the flights take due to different routes airlines prefer to take as part of their journey. The analysis made from this project will show two visualisations of metrice compared of flight data between April to Ausugt of 2022. 
 
-As a customer, I want to filter flights by destination country and a date range (Apr–Aug 2022) so I only see relevant options with quick indicators of price and duration.
+## Project Purpose
 
-Acceptance Criteria
+The aim of this project is to analyse flights around the world, while understanding parameters such as flight durations, Carbon Dioxide emissions and identifying any trends which can be depicted from the analysis. The investigation in to the dataset will be from a csv file containing flight details from various countries, with their corresponding airlines, dates, flight duration, and number of stops, with other parameters available to be measured. The extraction of the das will be conducted with the state of the art programming languages, with particular focus on utilising Pandas for data cleaning, Python which will be used for connecting with the database software, DBeaver, which in the end will all be brought together using Streamlit for data visualisation.
 
-Given the Overview page
-When I choose a destination country and date range within Apr–Aug 2022
-Then the table shows only matching flights
-And KPIs display Avg Price (USD) and Median Duration (hrs) for the filtered set
-And the destination bar chart reflects the same filters.
+##Tech Stack
 
-Story C2 — Compare two destinations
+- Pandas (Data Transformation)
+- Python (Environment set up)
+- DBeaver - PostgreSQL (Data analysis and gaining insights)
+- Streamlit (Application development for key insights)
 
-As a customer, I want to compare two destination countries to see arrival timelines, the highest/lowest prices (with airline), and flight durations.
+#Epics and User Stories 
 
-Acceptance Criteria
+##Epic 1 
 
-Given the Compare Countries page
-When I select Country A and Country B and set a date range
-Then I see a timeline of arrivals (date & time) by country
-And KPIs for Highest/Lowest price with airline for each country
-And a duration distribution chart (boxplot + points).
+As a Environment Data Analyst, I want to extract the Flights data from the CSV file, so that I can enrich the data accordingly.
 
-Environmental Data Analyst Epic — Quantify emissions drivers
+##User story 1
 
-Goal: Identify aircraft and patterns that contribute most to CO₂ and ensure data quality for analysis.
+As a Data Analyst, I want to extract the CSV file using Pandas so that I can transform and compile this for further analysis.
 
-Story A1 — Standardise & enrich dataset
+##Epic 2
 
-As an environmental data analyst, I want to standardise and enrich the CSV (units, datetimes, derived fields) so it’s analysis-ready for loading to PostgreSQL.
+As a Environment Data Analyst, I want to standerdise, enrich, clean, convert the data, so that it is ready to be used when ready to load.
 
-Acceptance Criteria
+##User story 2
 
-Given the raw CSV
-When the transform step runs
-Then durations are converted to hours, CO₂ to kg, stops → is_direct, price normalised (if needed), and datetimes parsed
-And column names are consistent (snake_case) with missing/duplicate handling documented.
+As a Environment Data Analyst, I want to clean, remove, add, and seperate columns to have consistency and better readibility.
 
-Story A2 — Rank aircraft by average CO₂
+##User Story 3
 
-As an environmental data analyst, I want a leaderboard of aircraft types by average CO₂ per flight (kg) to identify high emitters.
+As a Environment Data Analyst, I want to remove duplicates, rows with any missing value(s), so that the analysis can be conducted with margin for errors.
 
-Acceptance Criteria
+##Epic 3
 
-Given aircraft_type and emissions columns
-When I open the CO₂ view and choose a Top-N
-Then emissions are normalised to kg, aggregated by aircraft_type, sorted descending, and displayed as a bar chart with tooltips.
+As a Environment Data Analyst, I want to run the ETL pipeline to simultaneously run my VS Code with the PostreSQL database, so that analysis on flight metrics can be measured.
 
-Business Owner Epic — Monitor market & sustainability KPIs
+##User Story 4
 
-Goal: Track demand, pricing, and emissions to guide commercial and sustainability decisions.
+As a Environment Data Analyst, I want to store the transformed CSF file, cleaned and readily available as a single table in PostreSQL, so that queries can be written to one table only.
 
-Story B1 — Top destinations & direct/connecting mix (Apr–Aug)
+##Epic 4
 
-As a business owner, I want a Top destinations chart (Apr–Aug 2022) and a KPI for the share of direct flights to understand demand and product mix.
+As a Data Analyst, I want to gain insights and rends in the data, so that I can draw relevant conclusions that highlight trends and help take further actions.
 
-Acceptance Criteria
+##User Story 5
 
-Given the Overview page
-When the month filter covers Apr–Aug 2022
-Then I see the Top 10 destination countries by flight count
-And KPIs for Unique Routes and Direct flights (count or % where stops == 0).
+As a Business owner, I want to see the data on pricing, flexibility of airlines, so that I can depict what can be done to enhance flexibility of routes to take.
 
-Story B2 — Pricing outliers by destination
+##User story 6
 
-As a business owner, I want to see the highest and lowest prices per destination (with airline) to spot outliers and opportunities.
+As a customer, I want to be able to see the price of flights, how long flights are, and how many stops are on this journey, so that I can make better decisions for when I travel.
 
-Acceptance Criteria
 
-Given the destination comparison view
-When I select any destination and date range
-Then I see Highest and Lowest price entries with airline names
-And I can expand to view underlying flight details (date/time, airline, duration).
 
-Definition of Done (applies to all stories)
 
-Units are explicit (USD, hours, kg CO₂); charts & KPIs reflect filters consistently.
 
-Empty states handled (e.g., “No data for selection”).
 
-CSV export (if offered) matches the current filters.
+As a customer (traveler),
 
-Typical interactions respond in ~≤2 seconds for ≤10k rows.
 
-No secrets committed: credentials in .env / .streamlit/secrets.toml only.
+
+As a customer, I want to filter flights by destination country and date range so I see only relevant options with quick indicators of price and duration.
+I want to 
