@@ -9,9 +9,11 @@ def main():
     st.title("📊 Flight Data Overview")
     
     # Get CSV path from session state
+    
     csv_path = st.session_state.get("csv_path", "data/processed/cleaned_global_flights_data.csv")
     
     # Check if file exists
+    
     if not Path(csv_path).exists():
         st.error(f"Data file not found: {csv_path}")
         st.info("Please go back to the home page and specify a valid CSV file path.")
@@ -19,6 +21,7 @@ def main():
     
     try:
         # Load data
+        
         df = pd.read_csv(csv_path)
         
         st.markdown("### Dataset Summary")
@@ -37,10 +40,11 @@ def main():
         st.dataframe(df.head(10), use_container_width=True)
         
         # Show column information
+        
         st.markdown("### Dataset Structure")
         col_info = pd.DataFrame({
             'Column': df.columns,
-            'Data Type': df.dtypes.values,
+            'Data Type': df.dtypes.astype(str).values,
             'Non-Null Count': df.count().values,
             'Null Count': df.isnull().sum().values
         })
