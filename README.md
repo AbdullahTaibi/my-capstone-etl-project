@@ -9,16 +9,22 @@
 
 Flights are considered a luxury good in economical concepts, meaning as your income increases you would increase your consumption of such transport method. When booking a flight, or a number of flights, it is important to consider several factors, including season, necessity, type of plane, ticket prices, and ultimately how long the flights take due to different routes airlines prefer to take as part of their journey. The analysis made from this project will show two visualisations of metrics compared of flight data between April to August of 2022.
 
-## Project Purpose
+Project purpose
 
-The aim of this project is to analyse flights around the world, while understanding parameters such as flight durations, Carbon Dioxide emissions and identifying any trends which can be depicted from the analysis. The investigation in to the dataset will be from a csv file containing flight details from various countries, with their corresponding airlines, dates, flight duration, and number of stops, with other parameters available to be measured. The extraction of the das will be conducted with the state of the art programming languages, with particular focus on utilising Pandas for data cleaning, Python which will be used for connecting with the database software, DBeaver, which in the end will all be brought together using Streamlit for data visualisation.
+The goal is to analyse worldwide flights to understand patterns in flight duration, CO₂ emissions, stops, and price, and to surface meaningful trends.
+The dataset is a CSV containing flight details across countries: airlines, dates, durations, stops, and additional measurable attributes. The workflow:
 
-Tech Stack:
+- Extract the CSV
+- Transform and standardise with Pandas
+- Load into PostgreSQL (DBeaver used as the SQL client)
+- Visualise insights with Streamlit
 
--   Pandas (Data Transformation)
--   Python (Environment set up)
--   DBeaver - PostgreSQL (Data analysis and gaining insights)
--   Streamlit (Application development for key insights)
+Tech stack
+
+- Python — environment & orchestration
+- Pandas — data cleaning, standardisation, enrichment
+- PostgreSQL — storage & analysis (queried via DBeaver)
+- Streamlit — interactive application & visualisations
 
 ## Epic 1
 
