@@ -1,5 +1,6 @@
 # Flights Capstone Project
 
+![Alt text](https://images.stockcake.com/public/e/4/6/e46d51ef-31f3-45ea-802b-83e996afa7e1_large/sunset-flight-silhouette-stockcake.jpg)
 
 
 
